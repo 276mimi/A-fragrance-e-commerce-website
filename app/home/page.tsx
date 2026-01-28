@@ -1,12 +1,14 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-// import { useState } from 'react'; // 1. IMPORTANT: Import useState
 import HeaderNav from '../HeaderNav/page'
 import About from '../about/page'
 import Product from '../product/page'
 import ContactUs from '../contact/page'
 import Footer from '../Footer/page'
+
+// Static import for Vercel deployment reliability
+import heroBg from '../../public/images/Bhero1.png';
 
 const Hero = () => {
   return (
@@ -14,7 +16,7 @@ const Hero = () => {
       <HeaderNav />
       <section className="relative w-full h-[80vh] md:h-screen overflow-hidden flex items-center justify-center">
         <Image
-          src="/images/Bhero1.png"
+          src={heroBg}
           alt="Hero Section"
           fill
           className="object-cover transition-transform duration-1000 hover:scale-105"
@@ -37,7 +39,7 @@ const Hero = () => {
             Exceptional Perfumes & Concentrated Oils <br className="hidden md:block"/> Exclusively Selected for You
           </p>
 
-          <Link href="/shop" className="group relative bg-white/5 border border-white/10 text-gray-300 font-serif py-2 px-8 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/10 hover:text-white  hover:border-[#FFC400]/50 shadow-xl">
+          <Link href="/shop" className="group relative bg-white/5 border border-white/10 text-gray-300 font-serif py-2 px-8 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/10 hover:text-white  shadow-xl">
             <span className="relative z-10 font-bold tracking-widest uppercase text-sm">Shop Now</span>
           </Link>
         </div>

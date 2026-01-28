@@ -5,9 +5,12 @@ import { useState } from 'react';
 import { useCart } from '../components/CartContext';
 import { useRouter } from 'next/navigation';
 
+// This import ensures Vercel finds the file during the build process
+import logoImg from '../../public/images/icon.png'; 
+
 const HeaderNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // Moved inside the component
+  const [searchQuery, setSearchQuery] = useState(""); 
   const router = useRouter();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -15,11 +18,10 @@ const HeaderNav = () => {
   const { cart, setIsCartOpen } = useCart();
   const itemCount = cart.reduce((total: any, item: any) => total + item.quantity, 0);
 
-  // Search Logic
   const handleSearch = (e: any) => {
     if (e.key === 'Enter' && searchQuery.trim() !== "") {
       router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
-      setSearchQuery(""); // Clear search after hitting enter
+      setSearchQuery(""); 
     }
   };
 
@@ -31,7 +33,7 @@ const HeaderNav = () => {
         <div className="flex items-center gap-4">
           <Link href="/" className="transition-transform hover:scale-105">
             <Image 
-              src="/images/icon.png" 
+              src={logoImg} 
               alt="MQ's logo" 
               width={100} 
               height={100} 
@@ -39,7 +41,6 @@ const HeaderNav = () => {
             />
           </Link>
 
-          {/* SEARCH INPUT FIELD (Option A) */}
           <div className="hidden sm:flex items-center bg-white/10 border border-white/20 rounded-full px-4 py-1.5 focus-within:border-[#FFC400]/50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
               <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -115,7 +116,6 @@ const HeaderNav = () => {
           </button>
 
           <div className="flex flex-col gap-6 font-serif">
-            {/* Mobile Search Input */}
             <div className="flex items-center bg-white/5 border border-white/10 rounded-xl px-4 py-2">
               <input 
                 type="text" 
