@@ -5,9 +5,6 @@ import { useState } from 'react';
 import { useCart } from '../components/CartContext';
 import { useRouter } from 'next/navigation';
 
-// This import ensures Vercel finds the file during the build process
-
-
 const HeaderNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); 
@@ -38,6 +35,7 @@ const HeaderNav = () => {
               width={100} 
               height={100} 
               className='w-[60px] h-auto md:w-[80px]' 
+              priority
             />
           </Link>
 

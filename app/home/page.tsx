@@ -7,8 +7,6 @@ import Product from '../product/page'
 import ContactUs from '../contact/page'
 import Footer from '../Footer/page'
 
-// Static import for Vercel deployment reliability
-
 const Hero = () => {
   return (
     <>
@@ -38,7 +36,7 @@ const Hero = () => {
             Exceptional Perfumes & Concentrated Oils <br className="hidden md:block"/> Exclusively Selected for You
           </p>
 
-          <Link href="/shop" className="group relative bg-white/5 border border-white/10 text-gray-300 font-serif py-2 px-8 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/10 hover:text-white  shadow-xl">
+          <Link href="/shop" className="group relative bg-white/5 border border-white/10 text-gray-300 font-serif py-2 px-8 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/10 hover:text-white  hover:border-[#FFC400]/50 shadow-xl">
             <span className="relative z-10 font-bold tracking-widest uppercase text-sm">Shop Now</span>
           </Link>
         </div>
