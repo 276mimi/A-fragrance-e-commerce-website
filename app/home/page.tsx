@@ -8,7 +8,6 @@ import ContactUs from '../contact/page'
 import Footer from '../Footer/page'
 
 // Static import for Vercel deployment reliability
-import heroBg from '../../public/images/Bhero1.png';
 
 const Hero = () => {
   return (
@@ -16,7 +15,7 @@ const Hero = () => {
       <HeaderNav />
       <section className="relative w-full h-[80vh] md:h-screen overflow-hidden flex items-center justify-center">
         <Image
-          src={heroBg}
+          src="/images/Bhero1.png"
           alt="Hero Section"
           fill
           className="object-cover transition-transform duration-1000 hover:scale-105"

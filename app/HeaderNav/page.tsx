@@ -6,7 +6,7 @@ import { useCart } from '../components/CartContext';
 import { useRouter } from 'next/navigation';
 
 // This import ensures Vercel finds the file during the build process
-import logoImg from '../../public/images/icon.png'; 
+
 
 const HeaderNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +33,7 @@ const HeaderNav = () => {
         <div className="flex items-center gap-4">
           <Link href="/" className="transition-transform hover:scale-105">
             <Image 
-              src={logoImg} 
+              src="/images/icon.png" 
               alt="MQ's logo" 
               width={100} 
               height={100} 
