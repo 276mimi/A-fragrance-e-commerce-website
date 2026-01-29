@@ -99,7 +99,7 @@ const ProductsSection = () => {
                 <div className='group max-w-[220px] mx-auto w-full bg-white/5 border border-white/10 p-4 rounded-3xl transition-all duration-500 hover:border-[#FFC400]/50 hover:bg-white/10 hover:-translate-y-2 shadow-2xl'>
                   <div className="relative">
                     <div className="overflow-hidden rounded-3xl">
-                      <img src={perf8.src} alt='Ramz Lattafa' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
+                      <img src={perf8.src} alt='Khadlaj Island Vanilla Dunes' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
                       <button 
@@ -111,7 +111,7 @@ const ProductsSection = () => {
                     </div>
                   </div>
                   <div className='pt-7'>
-                    <i><p className='text-white font-serif font-medium'>Ramz Lattafa</p></i>
+                    <i><p className='text-white font-serif font-medium'>Khadlaj Island Vanilla Dunes</p></i>
                     <p className='text-[#ffc400] font-bold'>₦25,000</p>
                   </div>
                 </div>
