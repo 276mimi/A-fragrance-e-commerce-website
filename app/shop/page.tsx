@@ -1,5 +1,5 @@
 'use client';
-import { Suspense } from 'react'; // Added for build safety
+import { Suspense } from 'react'; 
 import { useSearchParams } from 'next/navigation';
 import HeaderNav from "../HeaderNav/page";
 import perf1 from "../../public/Shopimages/clubdenuit.jpeg"; 
@@ -17,9 +17,9 @@ import Khadlaj from "../../public/Shopimages/perf8.jpeg";
 import Footer from '../Footer/page';
 import { useCart } from "../components/CartContext";
 
-// Separated the content to handle the Search Params
 const ShopContent = () => {
-  const { addToCart } = useCart();
+  // Added setIsCartOpen here to handle the slide-out effect
+  const { addToCart, setIsCartOpen } = useCart();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || "";
 
@@ -36,26 +36,34 @@ const ShopContent = () => {
     { id: 10, name: "Eclaire", price: 50000, category: "Spray", img:Eclaire},
     { id: 11, name: "Khamrah", price: 25000, category: "Spray", img:Khamrah},
     { id: 12, name: "Khadlaj Island Vanilla Dunes", price: 35000, category: "Spray", img:Khadlaj},
-    // { id: 12, name: "9PM", price: 40000, category: "Spray", img:nine},
-
   ];
 
-  // Logic to filter products based on the search query
   const filteredProducts = allProducts.filter(product => 
     product.name.toLowerCase().includes(searchQuery)
   );
 
+  // Function to handle adding and showing the cart
+  const handleAddAction = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.img.src
+    });
+    setIsCartOpen(true); // This triggers the slide-out notification
+  };
+
   return (
     <section id="shop" className="py-10 px-6 max-w-7xl mx-auto text-white">
-<div className="text-center mb-16">
-  <h1 className="inline-block text-xl  font-serif font-bold border-b-2 border-[#6A1E99] pb-2 tracking-widest">
-    {searchQuery ? (
-      <span className="lowercase font-medium">results for: {searchQuery}</span>
-    ) : (
-      <span className="uppercase">SHOP</span>
-    )}
-  </h1>
-</div>
+      <div className="text-center mb-16">
+        <h1 className="inline-block text-xl font-serif font-bold border-b-2 border-[#6A1E99] pb-2 tracking-widest">
+          {searchQuery ? (
+            <span className="lowercase font-medium">results for: {searchQuery}</span>
+          ) : (
+            <span className="uppercase">SHOP</span>
+          )}
+        </h1>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-0">
         {filteredProducts.length > 0 ? (
@@ -71,13 +79,8 @@ const ShopContent = () => {
                 </div>
                 <div className="absolute -bottom-6 left-0 right-0 flex justify-center">
                   <button 
-                    onClick={() => addToCart({
-                      id: product.id,
-                      name: product.name,
-                      price: product.price,
-                      image: product.img.src
-                    })}
-                    className="bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]"
+                    onClick={() => handleAddAction(product)}
+                    className="bg-white px-4 py-1.5 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif "
                   >
                     Add to cart
                   </button>
@@ -104,7 +107,6 @@ const ShopPage = () => {
   return (
     <div className="bg-black min-h-screen">
       <HeaderNav />
-      {/* Suspense is required by Next.js when using useSearchParams */}
       <Suspense fallback={<div className="text-white text-center py-20">Loading Shop...</div>}>
         <ShopContent />
       </Suspense>

@@ -13,7 +13,14 @@ import perf7 from '../../public/Shopimages/perf7.jpeg'
 import perf8 from '../../public/Shopimages/perf8.jpeg'
 
 const ProductsSection = () => {
-    const { addToCart } = useCart(); 
+    // 1. Pulled setIsCartOpen from the hook
+    const { addToCart, setIsCartOpen } = useCart(); 
+
+    // 2. Helper function to add item AND slide out the cart
+    const handleAddToCart = (product: any) => {
+      addToCart(product);
+      setIsCartOpen(true); // This opens the sidebar immediately!
+    };
 
     return (
         <section id="pr" className="text-white py-10 md:pl-60 ">
@@ -32,7 +39,10 @@ const ProductsSection = () => {
                       <img src={perf3.src} alt='Ajayeb Dubai' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] left-0 right-0 flex justify-center z-10">
-                      <button onClick={() => addToCart({ id: 2, name: "Ajayeb Dubai", price: 35000, image: perf3.src })} className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 2, name: "Ajayeb Dubai", price: 35000, image: perf3.src })} 
+                        className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
@@ -50,7 +60,10 @@ const ProductsSection = () => {
                       <img src={perf1.src} alt='Club de nuit' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
-                      <button onClick={() => addToCart({ id: 3, name: "Club de Nuit", price: 50000, image: perf1.src })} className='flex gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 3, name: "Club de Nuit", price: 50000, image: perf1.src })} 
+                        className='flex gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
@@ -68,7 +81,10 @@ const ProductsSection = () => {
                       <img src={perf7.src} alt='Ramz Lattafa' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
-                      <button onClick={() => addToCart({ id: 4, name: "Ramz Lattafa", price: 25000, image: perf7.src })} className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 4, name: "Ramz Lattafa", price: 25000, image: perf7.src })} 
+                        className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
@@ -79,14 +95,17 @@ const ProductsSection = () => {
                   </div>
                 </div>
 
-                {/* PRODUCT 4: Duplicate/Second Ramz Lattafa (as per your code) */}
+                {/* PRODUCT 4: Ramz Lattafa Gold */}
                 <div className='group max-w-[220px] mx-auto w-full bg-white/5 border border-white/10 p-4 rounded-3xl transition-all duration-500 hover:border-[#FFC400]/50 hover:bg-white/10 hover:-translate-y-2 shadow-2xl'>
                   <div className="relative">
                     <div className="overflow-hidden rounded-3xl">
                       <img src={perf8.src} alt='Ramz Lattafa' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
-                      <button onClick={() => addToCart({ id: 5, name: "Ramz Lattafa Gold", price: 25000, image: perf8.src })} className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 5, name: "Ramz Lattafa Gold", price: 25000, image: perf8.src })} 
+                        className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
@@ -104,7 +123,10 @@ const ProductsSection = () => {
                       <img src={perf2.src} alt='Lattafa Hayaati' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
-                      <button onClick={() => addToCart({ id: 1, name: "Lattafa Hayaati", price: 30000, image: perf2.src })} className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 1, name: "Lattafa Hayaati", price: 30000, image: perf2.src })} 
+                        className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
@@ -122,7 +144,10 @@ const ProductsSection = () => {
                       <img src={perf3.src} alt='Ajayeb Dubai' className='w-full h-auto rounded-3xl transition-transform duration-700 group-hover:scale-110' />
                     </div>
                     <div className="absolute top-[90%] flex justify-center w-full z-10">
-                      <button onClick={() => addToCart({ id: 6, name: "Ajayeb Dubai Black", price: 35000, image: perf3.src })} className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'>
+                      <button 
+                        onClick={() => handleAddToCart({ id: 6, name: "Ajayeb Dubai Black", price: 35000, image: perf3.src })} 
+                        className='flex items-center gap-2 bg-white px-2 py-1 rounded-full border border-[#6A1E99] shadow-xl transition-all duration-300 text-[#6A1E99] font-light font-serif hover:text-black hover:border-[#6A1E99]'
+                      >
                         <p>🛒 Add to cart</p>
                       </button>
                     </div>
